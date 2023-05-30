@@ -18,6 +18,4 @@ public class Main {
         httpServer.setExecutor(Executors.newSingleThreadExecutor());
         httpServer.start();
     }
-
-
 }
