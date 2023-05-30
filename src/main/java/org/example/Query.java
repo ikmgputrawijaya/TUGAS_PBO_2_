@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 public class Query {
     public static Connection connect() {
-        // Ubah path dan nama file database sesuai dengan lokasi dan nama file SQLite Anda
+//         Ubah path dan nama file database sesuai dengan lokasi dan nama file SQLite Anda
         String url = "jdbc:sqlite:C:\\Dev\\Tutorial java\\Belajar Java\\TUGAS_PBO_2_\\src\\DB_Api.db";
+        String rootPath = System.getProperty("user.dir");
+        url = "jdbc:sqlite:" + rootPath + "/DB_Api.db";
         Connection connection = null;
 
         try {
@@ -271,6 +273,4 @@ public class Query {
             System.out.println(e.getMessage());
         }
     }
-
-
 }
