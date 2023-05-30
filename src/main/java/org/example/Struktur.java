@@ -10,6 +10,7 @@ public class Struktur {
                 "\t\"type\" : "+type+"\n";
         return result;
     }
+    
     public static String products(int id, int sellerId, String title, String description, int price, int stock){
         String result = "\t\"id\" : "+id+",\n"+
                 "\t\"seller\" : "+sellerId+",\n"+
@@ -19,6 +20,7 @@ public class Struktur {
                 "\t\"stock\" : "+stock+",\n";
         return result;
     }
+    
     public static String addresses(int userId, String type, String line1, String line2, String city, String province, String postcode){
         String result = "\t\"user\" : "+userId+",\n"+
                 "\t\"type\" : "+type+",\n"+
@@ -29,6 +31,7 @@ public class Struktur {
                 "\t\"postcode\" : "+postcode+"\n";
         return result;
     }
+    
     public static String orders(int id, int buyer, int note, int total, int discount, String is_paid){
         String result = "\t\"id\" : "+id+",\n"+
                 "\t\"buyer\" : "+buyer+",\n"+
@@ -38,6 +41,7 @@ public class Struktur {
                 "\t\"is_paid\" : "+is_paid+"\n";
         return result;
     }
+    
     public static String order_details(int id, int productId, int quantity, int price){
         String result = "\t\"id\" : "+id+",\n"+
                 "\t\"product\" : "+productId+",\n"+
@@ -45,6 +49,7 @@ public class Struktur {
                 "\t\"price\" : "+price+"\n";
         return result;
     }
+    
     public static String reviews(int id, int star, String description){
         String result = "\t\"id\" : "+id+",\n"+
                 "\t\"star\" : "+star+",\n"+
