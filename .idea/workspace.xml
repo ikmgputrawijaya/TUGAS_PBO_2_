@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="314cafc5-83d1-4769-8206-1539073e14bf" name="Changes" comment="menambahkan handler untuk POST PUT DELETE GET&#10;menambahkan query (prosedur) untuk input">
+    <list default="true" id="314cafc5-83d1-4769-8206-1539073e14bf" name="Changes" comment="menambahkan delete pada kelaas Query.java">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Parsing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DB_Api.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/DB_Api.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DB_Api.db-journal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Query.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Struktur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Struktur.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,12 +80,20 @@
       <option name="project" value="LOCAL" />
       <updated>1685372889520</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="menambahkan delete pada kelaas Query.java">
+      <created>1685436746012</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685436746012</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit menghubungkan http server" />
     <MESSAGE value="menambahkan handler untuk POST PUT DELETE GET&#10;menambahkan query (prosedur) untuk input" />
-    <option name="LAST_COMMIT_MESSAGE" value="menambahkan handler untuk POST PUT DELETE GET&#10;menambahkan query (prosedur) untuk input" />
+    <MESSAGE value="menambahkan delete pada kelaas Query.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="menambahkan delete pada kelaas Query.java" />
   </component>
 </project>

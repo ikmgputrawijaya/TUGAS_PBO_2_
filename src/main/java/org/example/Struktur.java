@@ -52,4 +52,3 @@ public class Struktur {
         return result;
     }
 }
-
