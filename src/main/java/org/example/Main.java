@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         HttpServer httpServer = HttpServer.create(new InetSocketAddress("localhost", 8082), 0);
 
-        httpServer.createContext("/ecommerce");
+        httpServer.createContext("/", new Handler.EcommerceHandler());
         httpServer.setExecutor(Executors.newSingleThreadExecutor());
         httpServer.start();
     }

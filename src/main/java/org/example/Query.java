@@ -1,14 +1,12 @@
 package org.example;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class Query {
     public static Connection connect() {
         // Ubah path dan nama file database sesuai dengan lokasi dan nama file SQLite Anda
-        String url = "jdbc:sqlite:/path/to/database.db";
+        String url = "jdbc:sqlite:C:\\Dev\\Tutorial java\\Belajar Java\\TUGAS_PBO_2_\\src\\DB_Api.db";
         Connection connection = null;
 
         try {
@@ -120,7 +118,159 @@ public class Query {
         }
     }
 
+    public String appendString (ArrayList<String> json){
+        StringBuffer group = new StringBuffer();
+        for (String s : json) {
+            group.append(s);
+            group.append("\n\n");
+        }
+        String result = group.toString();
+        return result;
+    }
 
+    public ArrayList<String> selectAll(String table) {
+        ArrayList<String> result = new ArrayList<>();
+        try {
+            Connection connection = this.connect();
+            Statement statement = connection.createStatement();
+            String sql = "SELECT * FROM " + table + ";";
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            if (table.equals("users")) {
+                while (resultSet.next()) {
+                    result.add(Struktur.users(resultSet.getInt("id"), resultSet.getString("first_name"), resultSet.getString("last_name"), resultSet.getString("email"), resultSet.getString("phone_number"), resultSet.getString("type")));
+                }
+            }else if (table.equals("addresses")){
+                while (resultSet.next()){
+                    result.add(Struktur.addresses(resultSet.getInt("users"), resultSet.getString("type"), resultSet.getString("line1"), resultSet.getString("line2"), resultSet.getString("city"), resultSet.getString("province"), resultSet.getString("postcode")));
+                }
+            } else if (table.equals("order_details")){
+                while (resultSet.next()){
+                    result.add(Struktur.order_details(resultSet.getInt("order_id"), resultSet.getInt("product"), resultSet.getInt("quantity"), resultSet.getInt("price")));
+                }
+            } else if (table.equals("orders")){
+                while (resultSet.next()){
+                    result.add(Struktur.orders(resultSet.getInt("id"), resultSet.getInt("buyer"), resultSet.getInt("note"), resultSet.getInt("total"), resultSet.getInt("discount"), resultSet.getString("is_paid")));
+                }
+            } else if (table.equals("products")) {
+                while (resultSet.next()){
+                    result.add(Struktur.products(resultSet.getInt("id"), resultSet.getInt("seller"), resultSet.getString("title"), resultSet.getString("descripton"), resultSet.getInt("price"), resultSet.getInt("stock")));
+                }
+            } else if (table.equals("reviews")) {
+                while (resultSet.next()) {
+                    result.add(Struktur.reviews(resultSet.getInt("order_id"), resultSet.getInt("star"), resultSet.getString("description")));
+                }
+            }
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public void deleteUser(int id) {
+        String sql = "DELETE FROM users WHERE id = ?";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("User deleted successfully");
+            } else {
+                System.out.println("User not found");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void deleteAddress(int userId) {
+        String sql = "DELETE FROM addresses WHERE users = ?";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, userId);
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Addresses deleted successfully");
+            } else {
+                System.out.println("No addresses found for the user");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void deleteOrderDetails(int orderId) {
+        String sql = "DELETE FROM order_details WHERE order_id = ?";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, orderId);
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Order details deleted successfully");
+            } else {
+                System.out.println("No order details found for the order");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void deleteOrder(int orderId) {
+        String sql = "DELETE FROM orders WHERE id = ?";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, orderId);
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Order deleted successfully");
+            } else {
+                System.out.println("Order not found");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void deleteProduct(int productId) {
+        String sql = "DELETE FROM products WHERE id = ?";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, productId);
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Product deleted successfully");
+            } else {
+                System.out.println("Product not found");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void deleteReview(int orderId) {
+        String sql = "DELETE FROM reviews WHERE order_id = ?";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, orderId);
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Review deleted successfully");
+            } else {
+                System.out.println("Review not found");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 
 }

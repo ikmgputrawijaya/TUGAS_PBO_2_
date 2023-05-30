@@ -19,19 +19,19 @@ public class Struktur {
                 "\t\"stock\" : "+stock+",\n";
         return result;
     }
-    public static String addresses(int userId, String type, String lineOne, String lineTwo, String city, String province, String postcode){
+    public static String addresses(int userId, String type, String line1, String line2, String city, String province, String postcode){
         String result = "\t\"user\" : "+userId+",\n"+
                 "\t\"type\" : "+type+",\n"+
-                "\t\"line1\" : "+lineOne+",\n"+
-                "\t\"line2\" : "+lineTwo+",\n"+
+                "\t\"line1\" : "+line1+",\n"+
+                "\t\"line2\" : "+line2+",\n"+
                 "\t\"city\" : "+city+",\n"+
                 "\t\"province\" : "+province+",\n"+
                 "\t\"postcode\" : "+postcode+"\n";
         return result;
     }
-    public static String orders(int id, int buyerId, String note, int total, int discount, String is_paid){
+    public static String orders(int id, int buyer, int note, int total, int discount, String is_paid){
         String result = "\t\"id\" : "+id+",\n"+
-                "\t\"buyer\" : "+buyerId+",\n"+
+                "\t\"buyer\" : "+buyer+",\n"+
                 "\t\"note\" : "+note+",\n"+
                 "\t\"total\" : "+total+",\n"+
                 "\t\"discount\" : "+discount+",\n"+
